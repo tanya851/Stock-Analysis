@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <h1>
+    <!-- icon -->
+    <i class="fas fa-chart-line"></i>
+    Stock Analysis</h1>
+    <div class="content">
+        <div class="box1">
+
+            <div class="box">
+                <div class="flexbox">
+                    
+                    <h3><i class="fas fa-info-circle"></i> Note: Use stock symbols (e.g., AAPL, MSFT, TSLA)</h3>
+                    <div class="input">
+                <form id="stockForm">
+                    <div class="nameContainer">
+                        <span><i class="fas fa-coins"></i> Stock Symbol</span>
+                        <input type="text" class="name" id="name" placeholder="AAPL" required>
+                    </div>
+                    <div class="dateContainer">
+                        <span><i class="far fa-calendar-alt"></i> Date of Purchase</span>
+                        <input type="date" class="date" id="date" required>
+                    </div>
+                    <div class="unitContainer">
+                        <span><i class="fas fa-list-ol"></i> Number of shares</span>
+                        <input type="number" class="units" id="units" placeholder="10" required min="0" step="any">
+                    </div>
+                    <button type="submit" id="submitBtn"><i class="fas fa-search"></i> Check</button>
+                </form>
+                <div id="errorMsg" class="error hidden"></div>
+                <div id="apiInfo" class="api-info">
+                    <i class="fas fa-info-circle"></i> API Limit: Using demo data after 5 requests
+                </div>
+            </div>
+
+            </div>
+            </div>
+            </div>
+
+            <h1>DashBoard</h1>
+
+            <div class="box2">
+
+            <!-- dashboard -->
+            <div class="dashboard hidden" id="dashboard">
+                <div id="demoWarning" class="demo-warning hidden">
+                    <i class="fas fa-exclamation-triangle"></i> Showing demo data due to API limits
+                </div>
+                <h2 id="stockName">$SYMBOL</h2>
+                <div class="info">
+                    <div> Current Price: $ <span id="currentPrice">0.00</span></div>
+                    <div> Purchase Price: $ <span id="purchasePrice">0.00</span></div>
+                    <div>Shares: <span id="unitsDisplay">0</span></div>
+                    <div>Investment Value: $ <span id="investmentValue">0.00</span></div>
+                </div>
+            </div>
+            <div class="performance">
+                <h3><i class="fas fa-chart-bar"></i> Performance</h3>
+                <div class="chart-container">
+                    <canvas id="priceChart"></canvas>
+                </div>
+            </div>
+
+            <div class="keyIndicators">
+                <h3><i class="fas fa-key"></i> Key Indicators</h3>
+                <div>Daily % Change: <span id="dailyChange">0%</span></div>
+                <div>7-day Moving Avg: $ <span id="avg7">0.00</span></div>
+                <div>30-day Moving Avg: $ <span id="avg30">0.00</span></div>
+            </div>
+
+            <div class="market">
+                <h3><i class="fas fa-globe"></i> Market Sentiment</h3>
+                <div class="market-sentiment">
+                <div id="sentimentValue" style="margin-top: 15px; font-size: 1.2rem; color: rgb(197, 198, 199);">Neutral</div>
+            </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <p>Data provided by Alpha Vantage API (with demo fallback)</p>
+</footer>
+
+<script src="index.js"></script>
+</body>
+</html>
